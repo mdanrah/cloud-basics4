@@ -21,7 +21,7 @@ Parameters:
   DBPassword:
     Description: 'Password for the WordPress database user from AWS Secrets Manager'
     Type: String
-    Default: '{{resolve:secretsmanager:wordpress-lab-db-password:SecretString}}'
+    Default: '{{resolve:secretsmanager:wordpress_lab-db_password:SecretString}}'
     NoEcho: true
   DBRootPassword:
     Description: 'Root password for the MySQL database'
@@ -37,7 +37,7 @@ Resources:
       ImageId: ami-085ad6ae776d8f09c
       SecurityGroups:
         - !Ref InstanceSecurityGroup
-      KeyName: key #please-update-with-your-key
+      KeyName: AWSKeyPair #please-update-with-your-key
       UserData:
         Fn::Base64: !Sub |
           #!/bin/bash
